@@ -31,5 +31,5 @@ LD C,2                        ;Conout
 PUSH HL                       ;Protect, because we care about them <3
 CALL BDOS
 POP HL                        ;Retrive them from stack
-INC HL                       ;Lets get the next one
+INC HL                        ;Lets get the next one
 JP printstring                ;Lets roll again!
