@@ -9,12 +9,14 @@ LD B,7
 LD HL,TextInput
 ;7 character text input
 .loop:
-  PUSH BC
+  PUSH BC     ;Put BC in live-support
   LD C,8
+  PUSH HL     ;Put HL in Live-support
   CALL BDOS
+  POP HL      ;Get HL from Live-support
   LD [HL],A
   INC HL
-  POP BC
+  POP BC      ;Retrive BC from live-support
 djnz .loop
 
 RET
