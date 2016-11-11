@@ -4,21 +4,20 @@ LD HL,text1
 Call printstring
 LD HL,text2
 Call printstring
-LD C,8
-CALL BDOS
+
+LD B,7
+;7 character text input
+.loop:
+  PUSH BC
+  LD C,8
+  CALL BDOS
+  LD [TextInput],A
+  POP BC
+djnz .loop
+
 RET
 
-
-LD C,8
-CALL BDOS
-LD E,A
-LD C,2
-CALL BDOS
-
 TextInput: db 0
-LD C,8
-CALL BDOS
-LD [TextInput],A
 text1: db "Yo sup!",13,10,"$"
 text2: db "sup?",13,10,"$"
 ;Input: HL = pointer to string
