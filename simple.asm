@@ -18,19 +18,27 @@ LD HL,TextInput
   INC HL
   POP BC      ;Retrive BC from live-support
 djnz .loop
+LD HL,spacer
+Call printstring
+LD HL,text3
+Call printstring
+LD HL,TextInput
+Call printstring
 
 RET
 
 TextInput: db 0
 text1: db "Yo sup!",13,10,"$"
-text2: db "sup?",13,10,"$"
+text2: db "Hoe heet je? (max 7 chars)",13,10,"$"
+text3: db "Hoi ","$"
+spacer: db "  ",13,10,"$"
 ;Input: HL = pointer to string
 printstring: ld A,[HL]
 
 CP "$"
 RET Z
 LD E,A
-LD C,2                        ;Conout
+LD C,2                        ;Console out
 PUSH HL                       ;Protect, because we care about them <3
 CALL BDOS
 POP HL                        ;Retrive them from stack
