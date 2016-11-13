@@ -6,7 +6,6 @@ LD HL,text2
 Call printstring
 LD HL,TextInput
 LD B,7
-LD HL,TextInput
 ;7 character text input
 .loop:
   PUSH BC     ;Put BC in live-support
@@ -27,7 +26,7 @@ Call printstring
 
 RET
 
-TextInput: db 0
+TextInput: db 0,0,0,0,0,0,0,"$" ;Room for 7 chars
 text1: db "Yo sup!",13,10,"$"
 text2: db "Hoe heet je? (max 7 chars)",13,10,"$"
 text3: db "Hoi ","$"
